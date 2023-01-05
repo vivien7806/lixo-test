@@ -1,0 +1,37 @@
+GET http://localhost:3000/employee HTTP/1.1
+content-type: application/json
+
+### 
+POST http://localhost:3000/employee HTTP/1.1
+content-type: application/json
+
+{
+ "firstName" : "Vivi",
+ "lastName" : "M"
+}
+
+### 
+
+GET http://localhost:3000/employee/4fcee1ac-ac4e-440d-bd68-17f25a31e097 HTTP/1.1
+content-type: application/json
+
+### 
+
+POST http://localhost:3000/employee/4fcee1ac-ac4e-440d-bd68-17f25a31e097/vacation HTTP/1.1
+content-type: application/json
+
+{
+ "startDate" : "01/01/2023",
+ "endDate" : "01/10/2023",
+ "comment" : "coucou"
+}
+
+### 
+
+POST http://localhost:3000/currentlyoff/ HTTP/1.1
+content-type: application/json
+
+{
+ "startDate" : "01/08/2023",
+ "endDate" : "01/10/2023"
+}

@@ -1,0 +1,145 @@
+<div
+  class="markdown prose w-full break-words dark:prose-invert result-streaming light"
+>
+  <h1>EmployeeApi</h1>
+  <p>An API for managing employees and their vacations.</p>
+  <h2>Resources</h2>
+  <ul>
+    <li>
+      <code>POST /employee</code>: create a new employee with the provided first
+      and last name in the request body
+    </li>
+    <li><code>GET /employee</code>: retrieve a list of all employees</li>
+    <li>
+      <code>POST /employee/:id/vacation</code>: add a new vacation for the
+      employee with the specified <code>id</code> in the request path, with the
+      start date, end date, and comment in the request body
+    </li>
+    <li>
+      <code>GET /employee/:id</code>: retrieve details for the employee with the
+      specified <code>id</code> in the request path
+    </li>
+    <li>
+      <code>POST /currentlyoff</code>: retrieve a list of employees who are
+      currently on vacation within the specified start and end dates in the
+      request body
+    </li>
+  </ul>
+  <h2>Request bodies</h2>
+  <h3><code>POST /employee</code></h3>
+  <pre>
+  <code>
+  {
+    "firstName": "string",
+    "lastName": "string"
+  }</code>
+</pre>
+  <h3><code>POST /employee/:id/vacation</code></h3>
+  <pre>
+  <code>
+  {
+    "startDate": "YYYY-MM-DD",
+    "endDate": "YYYY-MM-DD",
+    "comment": "string"
+  }
+  </code>
+</pre>
+  <h3><code>POST /currentlyoff</code></h3>
+  <pre>
+  <code>
+  {
+    "startDate": "YYYY-MM-DD",
+    "endDate": "YYYY-MM-DD"
+  }
+</code>
+</pre>
+  <h2>Responses</h2>
+  <h3><code>POST /employee</code></h3>
+  <ul>
+    <li><code>201 Created</code>: the employee was successfully created</li>
+  </ul>
+  <h3><code>GET /employee</code></h3>
+  <ul>
+    <li>
+      <code>200 OK</code>: the list of employees was retrieved successfully
+    </li>
+  </ul>
+  <pre>
+  <code>
+  {
+    "employees": [
+      {
+        "id": "string",
+        "firstName": "string",
+        "lastName": "string",
+        "vacations": [
+          {
+            "startDate": "YYYY-MM-DD",
+            "endDate": "YYYY-MM-DD",
+            "comment": "string"
+          }
+        ]
+      }
+    ]
+  }
+  </code>
+</pre>
+  <h3><code>POST /employee/:id/vacation</code></h3>
+  <ul>
+    <li><code>201 Created</code>: the vacation was added successfully</li>
+    <li>
+      <code>404 Not Found</code>: no employee with the specified
+      <code>id</code> was found
+    </li>
+  </ul>
+  <h3><code>GET /employee/:id</code></h3>
+  <ul>
+    <li>
+      <code>200 OK</code>: the employee details were retrieved successfully
+    </li>
+    <li>
+      <code>404 Not Found</code>: no employee with the specified
+      <code>id</code> was found
+    </li>
+  </ul>
+  <pre>
+  <code>
+  {
+    "id": "string",
+    "firstName": "string",
+    "lastName": "string",
+    "vacations": [
+      {
+        "startDate": "YYYY-MM-DD",
+        "endDate": "YYYY-MM-DD",
+        "comment": "string"
+      }
+    ]
+  }
+</code>
+</pre>
+  <h3><code>POST /currentlyoff</code></h3>
+  <ul>
+    <li>`200 OK</li>
+  </ul>
+  <pre>
+<code>
+  {
+    "employees": [
+      {
+        "id": "string",
+        "firstName": "string",
+        "lastName": "string",
+        "vacations": [
+          {
+            "startDate": "YYYY-MM-DD",
+            "endDate": "YYYY-MM-DD",
+            "comment": "string"
+          }
+        ]
+      }
+    ]
+  }
+</code>
+</pre>
+</div>
